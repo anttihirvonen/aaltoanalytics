@@ -1,0 +1,3 @@
+aaltoanalytics/settings/local.py
+*.pyc
+fabfile.py
