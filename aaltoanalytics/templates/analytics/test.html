@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% block extra_head %}
+    <script>
+        function setCookie(c_name,value,exdays)
+{
+    var exdate=new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+    document.cookie=c_name + "=" + c_value;
+}
+function getCookie(c_name)
+{
+    var i,x,y,ARRcookies=document.cookie.split(";");
+    for (i=0;i<ARRcookies.length;i++)
+    {
+	x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+	y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+	x=x.replace(/^\s+|\s+$/g,"");
+	if (x==c_name)
+	{
+	    return unescape(y);
+	}
+    }
+}
+function guidGenerator() {
+    var S4 = function() {
+	return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
+function fillField(id, value) {
+    document.getElementById(id).innerHTML = value;
+}
+
+function runBrowserTests() {
+    fillField('your-os', navigator.platform);
+    fillField('your-browser', navigator.appVersion);
+
+    fillField('your-viewport-width', '');
+    fillField('your-viewport-height', '');
+    fillField('your-screen-width', window.screen.width);
+    fillField('your-screen-height', window.screen.height);
+    var currentTime = new Date();
+    fillField('your-time', currentTime.toString());
+    var isOldTimer = document.cookie?1:0;
+    if (!isOldTimer) setCookie('first-visit', currentTime, 120);
+    fillField('your-last-visit', isOldTimer?getCookie('last-visit'):'never');
+    fillField('your-first-visit', getCookie('first-visit')?getCookie('first-visit'):'never (that\'s odd)');
+    setCookie('last-visit', currentTime, 30);
+    if (!isOldTimer) setCookie('GUID', guidGenerator(), 1000);
+    if (navigator.geolocation) {
+	var btn = document.getElementById('approve-location');
+	btn.addEventListener('click', function(e) {
+	    e.preventDefault();
+	    btn.parentNode.removeChild;
+	    navigator.geolocation.getCurrentPosition( 
+		function(position) {
+		    fillField('your-location-lat', 'Latitude: ' + position.coords.latitude);
+		    fillField('your-location-long', 'Longitude: ' + position.coords.longitude);
+		}, function() {
+		    fillField('your-location', 'location not found.');
+		});
+	});
+    } else {
+	document.getElementById('your-location').parentNode.parentNode.removeChild;
+    }
+}
+/*
+document.addEventListener('DOMContentLoaded', runBrowserTests);
+*/
+$(function(){
+    $('#your-os').text(navigator.platform);
+    $('#your-browser').text(navigator.appVersion);
+    $('#your-viewport-width').text($(document).width());
+    $('#your-viewport-height').text($(document).height());
+    $('#your-screen-width').text(screen.width);
+    $('#your-screen-height').text(screen.height);
+    var currentTime = new Date();
+    $('#your-time').text(currentTime.toString());
+    var isOldTimer = document.cookie?1:0;
+    if (!isOldTimer) setCookie('first-visit', currentTime, 120);
+    $('#your-last-visit').text(isOldTimer?getCookie('last-visit'):'never');
+    $('#your-first-visit').text(getCookie('first-visit')?getCookie('first-visit'):'never (that\'s odd)');
+    setCookie('last-visit', currentTime, 30);
+    if (!isOldTimer) setCookie('GUID', guidGenerator(), 1000);
+    if (navigator.geolocation) {
+	$('#approve-location').bind('click', function(e) {
+	    e.preventDefault();
+	    $(this).remove();
+	    navigator.geolocation.getCurrentPosition( 
+		function(position) {
+		    $('#your-location-lat').text('Latitude: ' + position.coords.latitude);
+		    $('#your-location-long').text('Longitude: ' + position.coords.longitude);
+		}, function() {
+		    $('your-location').text('location not found.');
+		});
+	});
+    } else {
+	$('#your-location').parent().remove();
+    }
+});
+    </script>
+    <style type="text/css">
+
+.results {
+    margin-top: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 20px;
+}
+.results h3 {
+    color: #888;
+}
+.results strong {
+    display: block;
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.results span {
+    display: block;
+    margin-left: 50px;
+}
+.results button {
+    display: block;
+    margin-left: 50px;
+    padding: 2px 10px;
+}
+
+    </style>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/aaltoanalytics.js"></script>
+{% endblock %}
+{% block content %}
+<h1>Test page for Aalto Analytics</h1>
+<p>Request fired!</p>
+ <div class="results">
+    <h3>Some data that can be collected from your current session</h3>
+    <p><strong>Operating system: </strong><span id="your-os" class="result-field"></span></p>
+    <p><strong>Browser: </strong><span id="your-browser" class="result-field"></span></p>
+    <p><strong>Viewport width: </strong><span id="your-viewport-width" class="result-field"></span></p>
+    <p><strong>Viewport height: </strong><span id="your-viewport-height" class="result-field"></span></p>
+    <p><strong>Screen width: </strong><span id="your-screen-width" class="result-field"></span></p>
+    <p><strong>Screen height: </strong><span id="your-screen-height" class="result-field"></span></p>
+    <p><strong>Current time: </strong><span id="your-time" class="result-field"></span></p>
+    <p><strong>First visit: </strong><span id="your-first-visit" class="result-field"></span></p>
+    <p><strong>Last visit: </strong><span id="your-last-visit" class="result-field"></span></p>
+    <p><strong>Location: </strong><span id="your-location-lat" class="result-field"></span><span id="your-location-long" class="result-field"></span><button id="approve-location">Turn on</button></p>
+  </div>
+<script type="text/javascript">
+    AaltoAnalytics.trackPageView();
+    </script>
+{% endblock %}

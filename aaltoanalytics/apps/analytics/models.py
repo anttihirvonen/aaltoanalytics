@@ -9,6 +9,7 @@ class Pageview(models.Model):
     These pageviews store everything that is needed to construct
     basically any query about the user ecosystem.
     """
+    datetime = models.DateTimeField()
     # Needs a ton of new fields, like user/session id, os,
     # any other browser parameter we are interested in..
     screen_width = models.IntegerField(verbose_name="Leveys")
