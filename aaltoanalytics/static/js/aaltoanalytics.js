@@ -24,7 +24,28 @@ if(!this.AaltoAnalytics) {
             image.onerror = function(e) { console.log(e); }
             image.src = trackerUrl + request;
         }
+
+        /*
+         * Returns unique identifier of length 8.
+         *
+         */
+        function generateUid()
+        {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 8; i++ )
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
+        }
         
+        /*
+         * Returns unique id of the user.
+         *
+         * If no such id is found, we try to create one and save
+         * it into cookie for later use.
+         */
         function getUserId() {
             // Implement
         }
@@ -45,7 +66,7 @@ if(!this.AaltoAnalytics) {
             // Page url – no GET-parameters here
             params['url']       = document.URL ? document.URL.split('?')[0] : "";
             params['referrer'] = document.referrer;
-       
+
             // Construct GET-parameter string from collected values
             paramArray = []
             for(var key in params){ paramArray.push(key+'='+encodeURIComponent(params[key])); }
