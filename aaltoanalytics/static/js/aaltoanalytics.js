@@ -74,8 +74,16 @@ if(!this.AaltoAnalytics) {
          * If no such id is found, we try to create one and save
          * it into cookie for later use.
          */
-        function getUserId() {
-            // Implement
+        this.getUserId = function() {
+            this.uniqueUserId = readCookie('uid');
+
+            if(!this.uniqueUserId)
+                this.uniqueUserId = generateUid();
+
+            // Set the user cookie or extend it's lifetime
+            setCookie('uid', this.uniqueUserId, 365);
+
+            return this.uniqueUserId;
         }
 
         function getVisitId() {
@@ -93,7 +101,8 @@ if(!this.AaltoAnalytics) {
             params['sheight']   = screen.height;
             // Page url – no GET-parameters here
             params['url']       = document.URL ? document.URL.split('?')[0] : "";
-            params['referrer'] = document.referrer;
+            params['referrer']  = document.referrer;
+            params['uid']       = this.getUserId();
 
             // Construct GET-parameter string from collected values
             paramArray = []
