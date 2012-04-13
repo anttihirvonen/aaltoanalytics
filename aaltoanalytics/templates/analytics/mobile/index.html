@@ -1,55 +1,35 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>
+{% extends 'analytics/mobile/base.html' %}
+{% block content %}
+<div data-role="page" id="page1">
+    <div data-theme="e" data-role="header">
+        <h3>
             Aalto Analytics
-        </title>
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-        <style>
-            /* App custom styles */
-        </style>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-        </script>
-        <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js">
-        </script>
-    </head>
-    <body>
-        <div data-role="page" id="page1">
-            <div data-theme="e" data-role="header">
-                <h3>
-                    Aalto Analytics
-                </h3>
-            </div>
-            <div data-role="content">
-                <h3>
-                    5000 users active right now.
-                </h3>
-                <ul data-role="listview" data-divider-theme="b" data-inset="true">
-                    <li data-role="list-divider" role="heading">
-                        Data sets
-                    </li>
-                    <li data-theme="c">
-                        <a href="#page1" data-transition="slide">
-                            Popular content
-                        </a>
-                    </li>
-                    <li data-theme="c">
-                        <a href="#page1" data-transition="slide">
-                            Hot right now
-                        </a>
-                    </li>
-                    <li data-theme="">
-                        <a href="#page1" data-transition="slide">
-                            Active users
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <script>
-            //App custom javascript
-        </script>
-    </body>
-</html>
+        </h3>
+    </div>
+    <div data-role="content">
+        <h3>
+            5000 users active right now.
+        </h3>
+        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+            <li data-role="list-divider" role="heading">
+            Data sets
+            </li>
+            <li data-theme="c">
+            <a href="{% url analytics-mobile_hot_content %}" data-transition="slide">
+                Hot content 
+            </a>
+            </li>
+            <li data-theme="c">
+            <a href="#page1" data-transition="slide">
+                Hot right now
+            </a>
+            </li>
+            <li data-theme="">
+            <a href="#page1" data-transition="slide">
+                Active users
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %} 
