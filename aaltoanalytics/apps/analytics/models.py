@@ -1,4 +1,18 @@
 from django.db import models
+from django.contrib import admin
+
+class Service(models.Model):
+    """
+    Service defines one web service in Aalto ecosystem.
+
+    Each service has it's own tracking_id that must be
+    used by giving it to AaltoAnalytics.setTrackingId in
+    order to correctly match pageviews with service.
+    """
+    name = models.CharField(max_length=32)
+    tracking_id = models.CharField(max_length=8)
+
+admin.site.register(Service)
 
 # Create your models here.
 class Pageview(models.Model):
@@ -9,7 +23,7 @@ class Pageview(models.Model):
     These pageviews store everything that is needed to construct
     basically any query about the user ecosystem.
     """
-    tracking_id = models.CharField(max_length=8)
+    service = models.ForeignKey(Service)
 
     user_id = models.CharField(max_length=8)
 
