@@ -111,6 +111,7 @@ if(!this.AaltoAnalytics) {
             params['screen_height']   = screen.height;
             // Page url – no GET-parameters here
             params['url']       = document.URL ? document.URL.split('?')[0] : "";
+            params['title']     = document.title;
             params['referrer']  = document.referrer;
             params['uid']       = this.getUserId();
 

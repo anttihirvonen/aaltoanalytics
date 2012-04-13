@@ -34,4 +34,6 @@ class Pageview(models.Model):
     screen_height = models.IntegerField(verbose_name="Korkeus")
 
     url = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+
     referrer = models.CharField(max_length=255)

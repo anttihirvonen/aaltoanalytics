@@ -20,6 +20,7 @@ def log_pageview(request):
     params['screen_width'] = request.GET.get("screen_width", "0")
     params['screen_height'] = request.GET.get("screen_height", "0")
     params['url'] = request.GET.get("url", "")
+    params['title'] = request.GET.get("title", "")
     params['user_id'] = request.GET.get('uid', '')
 
     params['referrer'] = request.GET.get("referrer", "")
