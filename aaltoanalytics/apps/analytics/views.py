@@ -29,3 +29,6 @@ def log_pageview(request):
 
 def show_raw_log(request):
     return render(request, 'analytics/show.html', {'pageviews' : Pageview.objects.all() })
+
+def mobile_index(request):
+    return render(request, 'analytics/mobile_index.html')
