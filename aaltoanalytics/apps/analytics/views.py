@@ -47,3 +47,9 @@ def mobile_hot_content(request):
     for service in Service.objects.all():
         service_pageview_list.append({'service' : service, 'pageviews' : Pageview.objects.filter(service=service).values('url', 'title').annotate(Count("url")).order_by("-url__count")})
     return render(request, 'analytics/mobile/hot_content.html', {'service_pageview_list' : service_pageview_list })
+
+def mobile_most_viewed_content(request):
+    service_pageview_list = []
+    for service in Service.objects.all():
+        service_pageview_list.append({'service' : service, 'pageviews' : Pageview.objects.filter(service=service).values('url', 'title').annotate(Count("url")).order_by("-url__count")})
+    return render(request, 'analytics/mobile/most_viewed_content.html', {'service_pageview_list' : service_pageview_list })
