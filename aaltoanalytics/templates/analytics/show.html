@@ -11,13 +11,17 @@
         <th>User ID</th>
         <th>Session ID</th>
         <th>Screen size</th>
+        <th>URL</th>
+        <th>Referrer</th>
     </tr>
     {% for row in pageviews %}
         <tr>
             <td>{{ row.datetime }}</td>
-            <td>dknd54gfdicne83 </td>
+            <td>{{ row.user_id }} </td>
             <td>3u4fpoei4u32u28 </td>
             <td>{{ row.screen_width }}x{{ row.screen_height }}</td>
+            <td>{{ row.url }}</td>
+            <td>{{ row.referrer }}</td>
         </tr>
     {% endfor %}
 </table>

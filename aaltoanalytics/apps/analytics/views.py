@@ -33,3 +33,5 @@ def show_raw_log(request):
 def mobile_index(request):
     return render(request, 'analytics/mobile/index.html')
 
+def mobile_hot_content(request):
+    return render(request, 'analytics/mobile/hot_content.html', {'pageviews' : Pageview.objects.all() })

@@ -1,0 +1,15 @@
+{% extends 'analytics/mobile/base.html' %}
+{% block content %}
+<div data-role="header" data-theme="e">
+    <h1>Hot content</h1>
+    <a href="{% url analytics-mobile_index %}" data-direction="reverse" data-iconpos="notext" data-icon="home">Home</a>
+</div>
+<div data-role="content">
+    <h2>Hot pages</h2>
+    <ul data-role="listview">
+        {% for page in pageviews %}
+            <li>{{ page.url }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

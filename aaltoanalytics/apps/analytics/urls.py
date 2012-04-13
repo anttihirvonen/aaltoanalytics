@@ -6,4 +6,5 @@ urlpatterns = patterns('aaltoanalytics.apps.analytics.views',
     url(r'^test/', direct_to_template, {'template' : 'analytics/test.html' }, name="analytics-test"),
     url(r'^show/', 'show_raw_log', name="analytics-show"),
     url(r'^mobile/index/', 'mobile_index', name="analytics-mobile_index"),
+    url(r'^mobile/content/hot', 'mobile_hot_content', name="analytics-mobile_hot_content"),
 )

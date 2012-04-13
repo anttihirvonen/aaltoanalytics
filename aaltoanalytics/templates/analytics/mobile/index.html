@@ -2,31 +2,31 @@
 {% block content %}
 <div data-role="page" id="page1">
     <div data-theme="e" data-role="header">
-        <h3>
+        <h1>
             Aalto Analytics
-        </h3>
+        </h1>
     </div>
     <div data-role="content">
         <h3>
-            5000 users active right now.
+            5000 active users in the past hour.
         </h3>
         <ul data-role="listview" data-divider-theme="b" data-inset="true">
             <li data-role="list-divider" role="heading">
-            Data sets
+             Past hour 
             </li>
             <li data-theme="c">
             <a href="{% url analytics-mobile_hot_content %}" data-transition="slide">
-                Hot content 
+                Most read content 
             </a>
             </li>
             <li data-theme="c">
             <a href="#page1" data-transition="slide">
-                Hot right now
+                Most viewed content 
             </a>
             </li>
             <li data-theme="">
             <a href="#page1" data-transition="slide">
-                Active users
+                Active users per service
             </a>
             </li>
         </ul>
