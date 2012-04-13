@@ -12,7 +12,13 @@ if(!this.AaltoAnalytics) {
     AaltoAnalytics = new function() {
 
         // Hardcoded for now, needs to be configurable
-        trackerUrl = "http://127.0.0.1:8000/analytics/log/"
+        trackerUrl = "http://127.0.0.1:8000/analytics/log/";
+
+        this.trackingId = "";
+
+        this.setTrackingId = function(id) {
+            this.trackingId = id;
+        }
 
         /*
          * Requests the 1x1 image from the server. 
@@ -94,8 +100,12 @@ if(!this.AaltoAnalytics) {
          * Does all the heavy lifting and actual tracking of page views
          */
         this.trackPageView = function() {
+            if(!this.trackingId)
+                return;
+
             params = {}
 
+            params['tid']       = this.trackingId;
             // Screen info
             params['swidth']    = screen.width;
             params['sheight']   = screen.height;
@@ -108,8 +118,6 @@ if(!this.AaltoAnalytics) {
             paramArray = []
             for(var key in params){ paramArray.push(key+'='+encodeURIComponent(params[key])); }
             getParams = paramArray.join("&")
-            document.cookie = "test=kis";
-            document.cookie = "val=fd";
             // Actual request
             getImage("?"+getParams);
         }
@@ -120,7 +128,7 @@ if(!this.AaltoAnalytics) {
          *
          * This function is called every 10 seconds to update
          */
-        this.bounceUpdate = function() {
+        this.lastActiveTimeUpdate = function() {
 
         }
     }
