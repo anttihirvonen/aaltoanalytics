@@ -14,14 +14,15 @@ def log_pageview(request):
     params['screen_width'] = request.GET.get("screen_width", "0")
     params['screen_height'] = request.GET.get("screen_height", "0")
     params['url'] = request.GET.get("url", "")
+    params['user_id'] = request.GET.get('uid', '')
 
     params['referrer'] = request.GET.get("referrer", "")
 
-    for key, value in params.items():
-        print key, " = ", urllib.unquote(value)
+    #for key, value in params.items():
+    #    print key, " = ", urllib.unquote(value)
 
-    params = {'datetime' : datetime.datetime.utcnow()}
-    #Pageview.objects.create(**params)
+    params['datetime'] = datetime.datetime.utcnow()
+    Pageview.objects.create(**params)
 
     # save pageview to database
     return HttpResponse(TRANSPARENT_1_PIXEL_GIF, content_type='image/gif') 
