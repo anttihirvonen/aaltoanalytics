@@ -1,0 +1,18 @@
+{% extends 'analytics/mobile/base.html' %}
+{% block content %}
+<div data-role="header" data-theme="e">
+    <h1>Most viewed content</h1>
+    <a href="{% url analytics-mobile_index %}" data-direction="reverse" data-iconpos="notext" data-icon="home">Home</a>
+</div>
+<div data-role="content">
+    <h2>List of most viewed by service</h2>
+    <ul data-role="listview">
+        {% for entry in service_pageview_list %}
+            <li data-role="list-divider">{{ entry.service.name }}</li>
+            {% for pageview in entry.pageviews %}
+                <li>{{ pageview.title }} <span class="ui-li-count">{{ pageview.url__count }}</span></li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
