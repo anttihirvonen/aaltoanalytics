@@ -107,8 +107,8 @@ if(!this.AaltoAnalytics) {
 
             params['tid']       = this.trackingId;
             // Screen info
-            params['swidth']    = screen.width;
-            params['sheight']   = screen.height;
+            params['screen_width']    = screen.width;
+            params['screen_height']   = screen.height;
             // Page url – no GET-parameters here
             params['url']       = document.URL ? document.URL.split('?')[0] : "";
             params['referrer']  = document.referrer;
@@ -120,16 +120,19 @@ if(!this.AaltoAnalytics) {
             getParams = paramArray.join("&")
             // Actual request
             getImage("?"+getParams);
+
+            // Update 
+            setInterval(this.lastActiveTimestampUpdate, 10000);
         }
 
         /*
          * Keeps server informed that the user is still on the same page.
          * This is used to identify which pages are the most popular.
          *
-         * This function is called every 10 seconds to update
+         * This function is called every 10 seconds to update the visit timestamp.
          */
-        this.lastActiveTimeUpdate = function() {
-
+        this.lastActiveTimestampUpdate = function() {
+            //console.log("test");
         }
     }
 }
