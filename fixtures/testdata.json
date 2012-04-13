@@ -1,0 +1,26 @@
+[
+    {
+        "pk": 1, 
+        "model": "analytics.service", 
+        "fields": {
+            "name": "Aalto Analytics Local", 
+            "tracking_id": "UTADFFKG"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "analytics.service", 
+        "fields": {
+            "name": "Oodi", 
+            "tracking_id": "QWERTYUI"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "analytics.service", 
+        "fields": {
+            "name": "Noppa", 
+            "tracking_id": "ASDFGHJK"
+        }
+    }
+]
