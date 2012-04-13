@@ -40,7 +40,9 @@ def show_raw_log(request):
     return render(request, 'analytics/show.html', {'pageviews' : Pageview.objects.all() })
 
 def mobile_index(request):
-    return render(request, 'analytics/mobile/index.html')
+    # TODO: output only currently active users
+    active_users = Pageview.objects.values('user_id').distinct().count()
+    return render(request, 'analytics/mobile/index.html', {'active_users' : active_users })
 
 def mobile_hot_content(request):
     service_pageview_list = []
