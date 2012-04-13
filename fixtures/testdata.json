@@ -22,5 +22,257 @@
             "name": "Noppa", 
             "tracking_id": "ASDFGHJK"
         }
+    }, 
+    {
+        "pk": 1, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "NUfwXMWe", 
+            "screen_width": 1600, 
+            "service": 1, 
+            "title": "Aalto Analytics", 
+            "url": "http://127.0.0.1:8000/analytics/test/", 
+            "referrer": "http://127.0.0.1:8000/analytics/show/", 
+            "datetime": "2012-04-13T20:23:33.985Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "NUfwXMWe", 
+            "screen_width": 1600, 
+            "service": 1, 
+            "title": "Aalto Analytics", 
+            "url": "http://127.0.0.1:8000/analytics/test/", 
+            "referrer": "http://127.0.0.1:8000/analytics/test/", 
+            "datetime": "2012-04-13T20:23:35.243Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "NUfwXMWe", 
+            "screen_width": 1600, 
+            "service": 1, 
+            "title": "Aalto Analytics", 
+            "url": "http://127.0.0.1:8000/analytics/test/", 
+            "referrer": "http://127.0.0.1:8000/analytics/show/", 
+            "datetime": "2012-04-13T20:23:38.058Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "UzhfPSMZ", 
+            "screen_width": 1600, 
+            "service": 3, 
+            "title": "Noppa - Etusivu", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_noppa.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:23:50.862Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "UzhfPSMZ", 
+            "screen_width": 1600, 
+            "service": 3, 
+            "title": "T-111.5360 WWW Applications P - Noppa - Aalto", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_noppa_course.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:23:54.441Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "UzhfPSMZ", 
+            "screen_width": 1600, 
+            "service": 2, 
+            "title": "Kurssi WWW Applications - Oodi", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_oodi_course.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:23:57.445Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "UzhfPSMZ", 
+            "screen_width": 1600, 
+            "service": 2, 
+            "title": "Oodi", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_oodi.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:23:59.537Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "KWjQaXCI", 
+            "screen_width": 1600, 
+            "service": 2, 
+            "title": "Oodi", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_oodi.html", 
+            "referrer": "", 
+            "datetime": "2012-04-13T20:24:15.445Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "KWjQaXCI", 
+            "screen_width": 1600, 
+            "service": 2, 
+            "title": "Kurssi WWW Applications - Oodi", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_oodi_course.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:24:20.282Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "KWjQaXCI", 
+            "screen_width": 1600, 
+            "service": 3, 
+            "title": "T-111.5360 WWW Applications P - Noppa - Aalto", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_noppa_course.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:24:22.208Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "KWjQaXCI", 
+            "screen_width": 1600, 
+            "service": 3, 
+            "title": "Noppa - Etusivu", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_noppa.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:24:24.124Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "KWjQaXCI", 
+            "screen_width": 1600, 
+            "service": 3, 
+            "title": "Noppa - Etusivu", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_noppa.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:24:25.164Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "KWjQaXCI", 
+            "screen_width": 1600, 
+            "service": 2, 
+            "title": "Kurssi WWW Applications - Oodi", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_oodi_course.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:24:26.351Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "KWjQaXCI", 
+            "screen_width": 1600, 
+            "service": 2, 
+            "title": "Kurssi WWW Applications - Oodi", 
+            "url": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/test_oodi_course.html", 
+            "referrer": "http://aaltoanalytics.s3-website-eu-west-1.amazonaws.com/", 
+            "datetime": "2012-04-13T20:24:27.979Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "NUfwXMWe", 
+            "screen_width": 1600, 
+            "service": 1, 
+            "title": "Aalto Analytics", 
+            "url": "http://127.0.0.1:8000/analytics/test/", 
+            "referrer": "http://127.0.0.1:8000/analytics/show/", 
+            "datetime": "2012-04-13T20:24:37.810Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "NUfwXMWe", 
+            "screen_width": 1600, 
+            "service": 1, 
+            "title": "Aalto Analytics", 
+            "url": "http://127.0.0.1:8000/analytics/test/", 
+            "referrer": "http://127.0.0.1:8000/analytics/show/", 
+            "datetime": "2012-04-13T20:24:38.573Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "NUfwXMWe", 
+            "screen_width": 1600, 
+            "service": 1, 
+            "title": "Aalto Analytics", 
+            "url": "http://127.0.0.1:8000/analytics/test/", 
+            "referrer": "http://127.0.0.1:8000/analytics/show/", 
+            "datetime": "2012-04-13T20:24:39.070Z", 
+            "screen_height": 900
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "analytics.pageview", 
+        "fields": {
+            "user_id": "NUfwXMWe", 
+            "screen_width": 1600, 
+            "service": 1, 
+            "title": "Aalto Analytics", 
+            "url": "http://127.0.0.1:8000/analytics/test/", 
+            "referrer": "http://127.0.0.1:8000/analytics/show/", 
+            "datetime": "2012-04-13T20:24:39.480Z", 
+            "screen_height": 900
+        }
     }
 ]
