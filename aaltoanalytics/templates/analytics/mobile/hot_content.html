@@ -7,8 +7,11 @@
 <div data-role="content">
     <h2>Hot pages</h2>
     <ul data-role="listview">
-        {% for page in pageviews %}
-            <li>{{ page.url }}</li>
+        {% for entry in service_pageview_list %}
+            <li data-role="list-divider">{{ entry.service.name }}</li>
+            {% for pageview in entry.pageviews %}
+                <li>{{ pageview.title }} <span class="ui-li-count">{{ pageview.url__count }}</span></li>
+            {% endfor %}
         {% endfor %}
     </ul>
 </div>

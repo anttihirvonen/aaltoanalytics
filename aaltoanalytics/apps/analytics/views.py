@@ -1,6 +1,8 @@
 # Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.db.models import Count
+
 from .models import Pageview, Service
 import datetime
 import urllib
@@ -41,4 +43,7 @@ def mobile_index(request):
     return render(request, 'analytics/mobile/index.html')
 
 def mobile_hot_content(request):
-    return render(request, 'analytics/mobile/hot_content.html', {'pageviews' : Pageview.objects.all() })
+    service_pageview_list = []
+    for service in Service.objects.all():
+        service_pageview_list.append({'service' : service, 'pageviews' : Pageview.objects.filter(service=service).values('url', 'title').annotate(Count("url")).order_by("-url__count")})
+    return render(request, 'analytics/mobile/hot_content.html', {'service_pageview_list' : service_pageview_list })
