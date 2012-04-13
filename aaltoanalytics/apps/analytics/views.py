@@ -3,18 +3,25 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Pageview
 import datetime
+import urllib
 
 # Name says it all :-)
 TRANSPARENT_1_PIXEL_GIF = "\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x80\x00\x00\xff\xff\xff\x00\x00\x00\x21\xf9\x04\x01\x00\x00\x00\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02\x44\x01\x00\x3b"
 
 def log_pageview(request):
-    # parse GET-parameters
+    params = {}
+    # parse all parameters 
+    params['screen_width'] = request.GET.get("screen_width", "0")
+    params['screen_height'] = request.GET.get("screen_height", "0")
+    params['url'] = request.GET.get("url", "")
+
+    params['referrer'] = request.GET.get("referrer", "")
+
+    for key, value in params.items():
+        print key, " = ", urllib.unquote(value)
+
     params = {'datetime' : datetime.datetime.utcnow()}
-
-    params['screen_width'] = request.GET.get("swidth", 0)
-    params['screen_height'] = request.GET.get("sheight", 0)
-
-    Pageview.objects.create(**params)
+    #Pageview.objects.create(**params)
 
     # save pageview to database
     return HttpResponse(TRANSPARENT_1_PIXEL_GIF, content_type='image/gif') 

@@ -38,16 +38,31 @@ if(!this.AaltoAnalytics) {
          */
         this.trackPageView = function() {
             params = {}
-            params['swidth'] = screen.width;
-            params['sheight'] = screen.height;
 
+            // Screen info
+            params['swidth']    = screen.width;
+            params['sheight']   = screen.height;
+            // Page url – no GET-parameters here
+            params['url']       = document.URL ? document.URL.split('?')[0] : "";
+            params['referrer'] = document.referrer;
+       
             // Construct GET-parameter string from collected values
             paramArray = []
-            for(var key in params){ paramArray.push(key+'='+params[key]); }
+            for(var key in params){ paramArray.push(key+'='+encodeURIComponent(params[key])); }
             getParams = paramArray.join("&")
 
             // Actual request
             getImage("?"+getParams);
+        }
+
+        /*
+         * Keeps server informed that the user is still on the same page.
+         * This is used to identify which pages are the most popular.
+         *
+         * This function is called every 10 seconds to update
+         */
+        this.bounceUpdate = function() {
+
         }
     }
 }
