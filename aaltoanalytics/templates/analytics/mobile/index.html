@@ -34,6 +34,47 @@
             </a>
             </li>
         </ul>
+        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+            <li data-role="list-divider" role="heading">
+             This week 
+            </li>
+            <li data-theme="c">
+            <a href="{% url analytics-mobile_hot_content %}" data-transition="slide">
+                Most read content 
+            </a>
+            </li>
+            <li data-theme="c">
+            <a href="{% url analytics-mobile_most_viewed_content %}" data-transition="slide">
+                Most viewed content 
+            </a>
+            </li>
+            <li data-theme="">
+            <a href="{% url analytics-mobile_active_users_per_service %}" data-transition="slide">
+                Active users per service
+            </a>
+            </li>
+        </ul>
+        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+            <li data-role="list-divider" role="heading">
+              This month 
+            </li>
+            <li data-theme="c">
+            <a href="{% url analytics-mobile_hot_content %}" data-transition="slide">
+                Most read content 
+            </a>
+            </li>
+            <li data-theme="c">
+            <a href="{% url analytics-mobile_most_viewed_content %}" data-transition="slide">
+                Most viewed content 
+            </a>
+            </li>
+            <li data-theme="">
+            <a href="{% url analytics-mobile_active_users_per_service %}" data-transition="slide">
+                Active users per service
+            </a>
+            </li>
+        </ul>
+
     </div>
 </div>
 {% endblock %} 
