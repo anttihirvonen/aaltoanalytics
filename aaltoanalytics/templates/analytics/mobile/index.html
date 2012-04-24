@@ -8,7 +8,11 @@
     </div>
     <div data-role="content">
         <h3>
-            {{ active_users }} active users in the past hour.
+            {% if active_users %}
+                {{ active_users }} active user{{ active_users|pluralize }} in the past hour.
+            {% else %}
+                No active users in the past hour.
+            {% endif %}
         </h3>
         <ul data-role="listview" data-divider-theme="b" data-inset="true">
             <li data-role="list-divider" role="heading">
