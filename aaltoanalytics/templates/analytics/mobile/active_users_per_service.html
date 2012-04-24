@@ -1,0 +1,16 @@
+{% extends 'analytics/mobile/base.html' %}
+{% block content %}
+<div data-role="header" data-theme="e">
+    <h1>Active users per service</h1>
+    <a href="{% url analytics-mobile_index %}" data-direction="reverse" data-iconpos="notext" data-icon="home">Home</a>
+</div>
+
+<div data-role="content">
+    <h2>Active users per service</h2>
+    <ul data-role="listview">
+        {% for service in services %}
+            <li>{{ service.name }} <span class="ui-li-count">{{ service.users }}</span></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
