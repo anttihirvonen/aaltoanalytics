@@ -1,0 +1,13 @@
+#FECB00 (Yellow)
+#ED2939 (Red)
+#0065BD (Blue)
+#000000 (Black)
+#928B81 (Grey) *
+#69BE28 (Lime)
+#009B3A (Green)
+#00A8B4 (Turqoise)
+#6639B7 (Dark blue) *
+#B1059D (Lila)
+#FF7900 (Orange)
+
+
