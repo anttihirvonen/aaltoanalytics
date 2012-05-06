@@ -40,6 +40,10 @@ class Pageview(models.Model):
     # any other browser parameter we are interested in..
     screen_width = models.IntegerField(verbose_name="Leveys")
     screen_height = models.IntegerField(verbose_name="Korkeus")
+    
+    browser_name = models.CharField(max_length=16)
+    browser_version = models.CharField(max_length=16)
+    operating_system = models.CharField(max_length=16)
 
     url = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
