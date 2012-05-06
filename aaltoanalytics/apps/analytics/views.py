@@ -23,6 +23,11 @@ def log_pageview(request):
     # parse all parameters 
     params['screen_width'] = request.GET.get("screen_width", "0")
     params['screen_height'] = request.GET.get("screen_height", "0")
+    
+    params['browser_name'] = request.GET.get('browser_name', '')
+    params['browser_version'] = request.GET.get('browser_version', '')
+    params['operating_system'] = request.GET.get('operating_system', '')
+    
     params['url'] = request.GET.get("url", "")
     params['title'] = request.GET.get("title", "")
     params['user_id'] = request.GET.get('uid', '')
@@ -82,3 +87,6 @@ def mobile_active_users_per_service(request):
         service.users = Pageview.objects.values('user_id').filter(service=service, datetime__gte=active_time_limit(hours)).distinct().count()
 
     return render(request, 'analytics/mobile/active_users_per_service.html', {'services' : services})
+
+def developer_view(request):
+    pass
