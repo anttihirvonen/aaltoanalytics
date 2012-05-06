@@ -44,4 +44,4 @@ SECRET_KEY = '2$=c!n(vabad2o$y&amp;c5c$7^ofa=sx#ai)f-q256!8sszno2ji+'
 INSTALLED_APPS += ('debug_toolbar',)
 MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS' : False}
-INTERNAL_IPS = ('127.0.0.1', '192.168.1.7')
+INTERNAL_IPS = ('127.0.0.1', '192.168.228.10')
