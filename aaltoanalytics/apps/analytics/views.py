@@ -2,7 +2,7 @@
 # Create your views here.
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
-from django.db.models import Count
+from django.db.models import Count, Avg
 
 from .models import Pageview, Service
 import datetime
@@ -61,7 +61,7 @@ def mobile_hot_content(request):
     service_pageview_list = []
     # TODO: formulate into one query
     for service in Service.objects.all():
-        service_pageview_list.append({'service' : service, 'pageviews' : Pageview.objects.filter(service=service, datetime__gte=active_time_limit()).values('url', 'title').annotate(Count("url")).order_by("-url__count")})
+        service_pageview_list.append({'service' : service, 'pageviews' : Pageview.objects.filter(service=service, datetime__gte=active_time_limit()).values('url', 'title').annotate(Avg("total_read_time")).order_by("-total_read_time__avg")})
     return render(request, 'analytics/mobile/hot_content.html', {'service_pageview_list' : service_pageview_list })
 
 def mobile_most_viewed_content(request):
