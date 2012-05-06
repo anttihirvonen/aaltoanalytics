@@ -1,12 +1,12 @@
 {% extends 'analytics/mobile/base.html' %}
 {% block content %}
-<div data-role="header" data-theme="e">
+<div data-role="header">
     <h1>Hot content</h1>
     <a href="{% url analytics-mobile_index %}" data-direction="reverse" data-iconpos="notext" data-icon="home">Home</a>
 </div>
-<div data-role="content">
+<div data-role="content" data-theme="a">
     <h2>Hot pages</h2>
-    <ul data-role="listview">
+    <ul data-role="listview" data-divider-theme="a">
         {% for entry in service_pageview_list %}
             <li data-role="list-divider">{{ entry.service.name }}</li>
             {% for pageview in entry.pageviews %}

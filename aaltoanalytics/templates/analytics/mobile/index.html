@@ -1,12 +1,12 @@
 {% extends 'analytics/mobile/base.html' %}
 {% block content %}
-<div data-role="page" id="page1">
-    <div data-theme="e" data-role="header">
+<div data-role="page" id="page1" data-theme="a">
+    <div data-role="header">
         <h1>
             Aalto Analytics
         </h1>
     </div>
-    <div data-role="content">
+    <div data-role="content" data-theme="a">
         <h3>
             {% if active_users %}
                 {{ active_users }} active user{{ active_users|pluralize }} in the past hour.
@@ -14,66 +14,78 @@
                 No active users in the past hour.
             {% endif %}
         </h3>
-        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+        <ul data-role="listview" data-inset="true" data-divider-theme="a">
             <li data-role="list-divider" role="heading">
              Past hour 
             </li>
-            <li data-theme="c">
+            <li>
             <a href="{% url analytics-mobile_hot_content %}" data-transition="slide">
                 Most read content 
             </a>
             </li>
-            <li data-theme="c">
+            <li>
             <a href="{% url analytics-mobile_most_viewed_content %}" data-transition="slide">
                 Most viewed content 
             </a>
             </li>
-            <li data-theme="">
+            <li>
             <a href="{% url analytics-mobile_active_users_per_service %}" data-transition="slide">
                 Active users per service
             </a>
             </li>
         </ul>
-        <ul data-role="listview" data-divider-theme="b" data-inset="true">
-            <li data-role="list-divider" role="heading">
+        <ul data-role="listview" data-inset="true" data-divider-theme="a">
+            <li data-role="list-divider" data-theme="a" role="heading">
              Past week 
             </li>
-            <li data-theme="c">
+            <li>
             <a href="{% url analytics-mobile_hot_content %}?hours=168" data-transition="slide">
                 Most read content 
             </a>
             </li>
-            <li data-theme="c">
+            <li>
             <a href="{% url analytics-mobile_most_viewed_content %}?hours=168" data-transition="slide">
                 Most viewed content 
             </a>
             </li>
-            <li data-theme="">
+            <li>
             <a href="{% url analytics-mobile_active_users_per_service %}?hours=168" data-transition="slide">
                 Active users per service
             </a>
             </li>
         </ul>
-        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+        <ul data-role="listview" data-divider-theme="a" data-inset="true">
             <li data-role="list-divider" role="heading">
               Past month 
             </li>
-            <li data-theme="c">
+            <li>
             <a href="{% url analytics-mobile_hot_content %}?hours=720" data-transition="slide">
                 Most read content 
             </a>
             </li>
-            <li data-theme="c">
+            <li>
             <a href="{% url analytics-mobile_most_viewed_content %}?hours=720" data-transition="slide">
                 Most viewed content 
             </a>
             </li>
-            <li data-theme="">
+            <li>
             <a href="{% url analytics-mobile_active_users_per_service %}?hours=720" data-transition="slide">
                 Active users per service
             </a>
             </li>
         </ul>
+        
+        <ul data-role="listview" data-divider-theme="a" data-inset="true">
+            <li data-role="list-divider" role="heading">
+            Developer stats 
+            </li>
+            <li>
+            <a href="{% url analytics-mobile_hot_content %}?hours=720" data-transition="slide">
+            Most read content 
+            </a>
+            </li>
+        </ul>
+        
 
     </div>
 </div>
