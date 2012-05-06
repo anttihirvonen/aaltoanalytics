@@ -131,17 +131,21 @@ if(!this.AaltoAnalytics) {
             // Actual request
             getJSONP("?"+getParams);
 
-            // Update 
-            setInterval(this.lastActiveTimestampUpdate, 5000);
+            // Circumventing the problems with objects and setInverval
+            var selfobj = this;
+            setInterval(function() { selfobj.lastActiveTimestampUpdate(); }, 10000);
         }
 
         /*
          * Keeps server informed that the user is still on the same page.
          * This is used to identify which pages are the most popular.
          *
-         * This function is called every 5 seconds to update the visit timestamp.
+         * This function is called every 10 seconds to update the visit's last read timestamp.
          */
         this.lastActiveTimestampUpdate = function() {
+            if(this.pageviewId)
+                // Append a random parameter to prevent caching
+                getJSONP("updatetime/"+this.pageviewId+"/?random=" + generateUid());
         }
     }
 }

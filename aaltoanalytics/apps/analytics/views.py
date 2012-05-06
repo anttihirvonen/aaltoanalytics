@@ -33,10 +33,18 @@ def log_pageview(request):
     #    print key, " = ", urllib.unquote(value)
 
     params['datetime'] = datetime.datetime.utcnow()
+    params['last_read_datetime'] = params['datetime']
     pageview = Pageview.objects.create(**params)
     
     # return jsonp object
     return HttpResponse("AaltoAnalytics.setPageviewId("+str(pageview.id)+")", content_type='application/javascript') 
+    
+def update_last_read_time(request, pageview_id):
+    pg = Pageview.objects.get(id=pageview_id)
+    pg.last_read_datetime = datetime.datetime.utcnow()
+    pg.save()
+    
+    return HttpResponse("", content_type="application/javascript")
 
 def show_raw_log(request):
     return render(request, 'analytics/show.html', {'pageviews' : Pageview.objects.all() })

@@ -41,3 +41,5 @@ class Pageview(models.Model):
     title = models.CharField(max_length=255)
 
     referrer = models.CharField(max_length=255)
+
+admin.site.register(Pageview)
