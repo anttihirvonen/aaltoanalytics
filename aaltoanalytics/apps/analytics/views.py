@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from django.db.models import Count
 
@@ -14,7 +15,7 @@ def log_pageview(request):
     try:
         service = Service.objects.get(tracking_id=request.GET.get("tid"))
     except Service.DoesNotExist:
-        raise
+        return HttpResponseNotFound("This service is not configured.")
         #return HttpResponse(TRANSPARENT_1_PIXEL_GIF, content_type='image/gif') 
 
     params = { 'service' : service }
