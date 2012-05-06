@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib import admin
 
@@ -27,7 +28,10 @@ class Pageview(models.Model):
 
     user_id = models.CharField(max_length=8)
 
+    # The momemnt this pageview was issued
     datetime = models.DateTimeField()
+    
+    last_read_datetime = models.DateTimeField()
     # Needs a ton of new fields, like user/session id, os,
     # any other browser parameter we are interested in..
     screen_width = models.IntegerField(verbose_name="Leveys")
