@@ -7,6 +7,7 @@ from django.db.models import Count
 from .models import Pageview, Service
 import datetime
 import urllib
+import simplejson as json
 
 # Name says it all :-)
 TRANSPARENT_1_PIXEL_GIF = "\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x80\x00\x00\xff\xff\xff\x00\x00\x00\x21\xf9\x04\x01\x00\x00\x00\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02\x44\x01\x00\x3b"
@@ -32,10 +33,10 @@ def log_pageview(request):
     #    print key, " = ", urllib.unquote(value)
 
     params['datetime'] = datetime.datetime.utcnow()
-    Pageview.objects.create(**params)
-
-    # save pageview to database
-    return HttpResponse(TRANSPARENT_1_PIXEL_GIF, content_type='image/gif') 
+    pageview = Pageview.objects.create(**params)
+    
+    # return jsonp object
+    return HttpResponse("AaltoAnalytics.setPageviewId("+str(pageview.id)+")", content_type='application/javascript') 
 
 def show_raw_log(request):
     return render(request, 'analytics/show.html', {'pageviews' : Pageview.objects.all() })

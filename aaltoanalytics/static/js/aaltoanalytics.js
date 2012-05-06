@@ -21,14 +21,23 @@ if(!this.AaltoAnalytics) {
         }
 
         /*
-         * Requests the 1x1 image from the server. 
+         * Makes the JSONP request to server.
          */
-        function getImage(request) {
-            var image = new Image(1, 1);
+        function getJSONP(request) {
+            /*var image = new Image(1, 1);
 
             image.onload = function () {};
             image.onerror = function(e) { console.log(e); }
-            image.src = trackerUrl + request;
+            image.src = trackerUrl + request;*/
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = trackerUrl + request;
+            head.appendChild(script);
+        }
+        
+        this.setPageviewId = function(id) {
+            this.pageviewId = id;
         }
 
         /*
@@ -120,20 +129,19 @@ if(!this.AaltoAnalytics) {
             for(var key in params){ paramArray.push(key+'='+encodeURIComponent(params[key])); }
             getParams = paramArray.join("&")
             // Actual request
-            getImage("?"+getParams);
+            getJSONP("?"+getParams);
 
             // Update 
-            setInterval(this.lastActiveTimestampUpdate, 10000);
+            setInterval(this.lastActiveTimestampUpdate, 5000);
         }
 
         /*
          * Keeps server informed that the user is still on the same page.
          * This is used to identify which pages are the most popular.
          *
-         * This function is called every 10 seconds to update the visit timestamp.
+         * This function is called every 5 seconds to update the visit timestamp.
          */
         this.lastActiveTimestampUpdate = function() {
-            //console.log("test");
         }
     }
 }
