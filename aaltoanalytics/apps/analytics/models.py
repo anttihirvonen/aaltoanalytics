@@ -32,6 +32,10 @@ class Pageview(models.Model):
     datetime = models.DateTimeField()
     
     last_read_datetime = models.DateTimeField()
+    
+    # Read time in seconds, updated in save()
+    total_read_time = models.IntegerField()
+    
     # Needs a ton of new fields, like user/session id, os,
     # any other browser parameter we are interested in..
     screen_width = models.IntegerField(verbose_name="Leveys")
@@ -41,5 +45,11 @@ class Pageview(models.Model):
     title = models.CharField(max_length=255)
 
     referrer = models.CharField(max_length=255)
+    
+    def save(self, *args, **kwargs):
+        difference = self.last_read_datetime - self.datetime
+        self.total_read_time = difference.seconds
+        super(Pageview, self).save(*args, **kwargs)
+   
 
 admin.site.register(Pageview)

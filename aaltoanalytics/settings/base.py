@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Commong Django settings. This file contains 
 # settings that are common to different development and
 # production environments. Use settings/local.py for all
@@ -38,7 +39,7 @@ USE_I18N = True
 USE_L10N = True
 
 # If you set this to False, Django will not use timezone-aware datetimes.
-USE_TZ = True
+USE_TZ = False
 
 LANGUAGES = (('fi', 'suomi'),)
 
