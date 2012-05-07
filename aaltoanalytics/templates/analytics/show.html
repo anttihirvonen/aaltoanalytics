@@ -8,9 +8,12 @@
 <table class="table table-striped table-bordered" style="margin-top: 20px">
     <tr>
         <th>Timestamp (UTC)</th>
+        <th>Read time</th>
         <th>User ID</th>
         <th>Session ID</th>
         <th>Screen size</th>
+        <th>Browser</th>
+        <th>OS</th>
         <th>URL</th>
         <th>Title</th>
         <th>Referrer</th>
@@ -18,9 +21,12 @@
     {% for row in pageviews %}
         <tr>
             <td>{{ row.datetime }}</td>
+            <td>{{ row.total_read_time }} s</td>
             <td>{{ row.user_id }} </td>
             <td>3u4fpoei4u32u28 </td>
             <td>{{ row.screen_width }}x{{ row.screen_height }}</td>
+            <td>{{ row.browser_name}} {{ row.browser_version }}</td>
+            <td>{{ row.operating_system }}</td>
             <td>{{ row.url }}</td>
             <td>{{ row.title }}</td>
             <td>{{ row.referrer }}</td>
