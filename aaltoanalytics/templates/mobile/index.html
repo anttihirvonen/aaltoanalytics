@@ -1,4 +1,4 @@
-{% extends 'analytics/mobile/base.html' %}
+{% extends 'mobile/base.html' %}
 {% block content %}
 <div data-role="page" id="page1" data-theme="a">
     <div data-role="header">
@@ -19,17 +19,17 @@
              Past hour 
             </li>
             <li>
-            <a href="{% url analytics-mobile_hot_content %}" data-transition="slide">
+            <a href="{% url mobile-hot_content %}" data-transition="slide">
                 Most read content 
             </a>
             </li>
             <li>
-            <a href="{% url analytics-mobile_most_viewed_content %}" data-transition="slide">
+            <a href="{% url mobile-most_viewed_content %}" data-transition="slide">
                 Most viewed content 
             </a>
             </li>
             <li>
-            <a href="{% url analytics-mobile_active_users_per_service %}" data-transition="slide">
+            <a href="{% url mobile-active_users_per_service %}" data-transition="slide">
                 Active users per service
             </a>
             </li>
@@ -39,17 +39,17 @@
              Past week 
             </li>
             <li>
-            <a href="{% url analytics-mobile_hot_content %}?hours=168" data-transition="slide">
+            <a href="{% url mobile-hot_content %}?hours=168" data-transition="slide">
                 Most read content 
             </a>
             </li>
             <li>
-            <a href="{% url analytics-mobile_most_viewed_content %}?hours=168" data-transition="slide">
+            <a href="{% url mobile-most_viewed_content %}?hours=168" data-transition="slide">
                 Most viewed content 
             </a>
             </li>
             <li>
-            <a href="{% url analytics-mobile_active_users_per_service %}?hours=168" data-transition="slide">
+            <a href="{% url mobile-active_users_per_service %}?hours=168" data-transition="slide">
                 Active users per service
             </a>
             </li>
@@ -59,17 +59,17 @@
               Past month 
             </li>
             <li>
-            <a href="{% url analytics-mobile_hot_content %}?hours=720" data-transition="slide">
+            <a href="{% url mobile-hot_content %}?hours=720" data-transition="slide">
                 Most read content 
             </a>
             </li>
             <li>
-            <a href="{% url analytics-mobile_most_viewed_content %}?hours=720" data-transition="slide">
+            <a href="{% url mobile-most_viewed_content %}?hours=720" data-transition="slide">
                 Most viewed content 
             </a>
             </li>
             <li>
-            <a href="{% url analytics-mobile_active_users_per_service %}?hours=720" data-transition="slide">
+            <a href="{% url mobile-active_users_per_service %}?hours=720" data-transition="slide">
                 Active users per service
             </a>
             </li>
@@ -80,7 +80,7 @@
             Developer stats 
             </li>
             <li>
-            <a href="{% url analytics-mobile_hot_content %}?hours=720" data-transition="slide">
+            <a href="{% url mobile-hot_content %}?hours=720" data-transition="slide">
             Most read content 
             </a>
             </li>
