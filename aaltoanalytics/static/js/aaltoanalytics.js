@@ -131,7 +131,7 @@ if(!this.AaltoAnalytics) {
         BrowserDetect.init();
 
         // Hardcoded for now, needs to be configurable
-        trackerUrl = "http://127.0.0.1:8000/analytics/log/";
+        trackerUrl = "http://track.x5.fi/analytics/log/";
 
         this.trackingId = "";
 
