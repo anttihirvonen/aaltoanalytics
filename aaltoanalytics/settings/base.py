@@ -139,6 +139,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aaltoanalytics.apps.analytics',
+    'aaltoanalytics.apps.mobile',
+    'aaltoanalytics.apps.development',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django_hosts',
