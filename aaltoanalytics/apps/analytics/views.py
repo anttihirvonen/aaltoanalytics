@@ -50,9 +50,3 @@ def update_last_read_time(request, pageview_id):
     pg.save()
     
     return HttpResponse("", content_type="application/javascript")
-
-def show_raw_log(request):
-    return render(request, 'analytics/show.html', {'pageviews' : Pageview.objects.all() })
-
-def developer_view(request):
-    pass
