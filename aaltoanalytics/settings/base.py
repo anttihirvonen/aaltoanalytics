@@ -82,11 +82,15 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django_hosts.middleware.HostsMiddleware'
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'aaltoanalytics.urls'
+
+ROOT_HOSTCONF = 'aaltoanalytics.hosts'
+DEFAULT_HOST = 'normal'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'aaltoanalytics.wsgi.application'
@@ -137,6 +141,7 @@ INSTALLED_APPS = (
     'aaltoanalytics.apps.analytics',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'django_hosts',
     'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
