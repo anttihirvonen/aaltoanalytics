@@ -4,7 +4,7 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 
-// Load the Visualization API and the piechart package.
+    // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages':['corechart']});
 
 // Set a callback to run when the Google Visualization API is loaded.
@@ -14,28 +14,38 @@ google.setOnLoadCallback(drawChart);
 // instantiates the pie chart, passes in the data and
 // draws it.
 function drawChart() {
-    
+
     // Create the data table.
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Browser');
     data.addColumn('number', 'Users');
     data.addRows([
-        {% for b in browsers %}
-        ['{{ b.browser_name }}',{{ b.user_count}}],
-        {% endfor %}
-        ]);
-        
-        // Set chart options
-        var options = {'title':'Browser Marketshare',
+            {% for b in browsers %}
+            ['{{ b.browser_name }}',{{ b.user_count}}],
+            {% endfor %}
+            ]);
+
+    // Create the data table.
+    var data2 = new google.visualization.DataTable();
+    data2.addColumn('string', 'Operating System');
+    data2.addColumn('number', 'Users');
+    data2.addRows([
+            {% for b in oses %}
+            ['{{ b.operating_system }}',{{ b.user_count}}],
+            {% endfor %}
+            ]);
+
+    // Set chart options
+    var options = {'title':'Browser Marketshare',
         height: 500};
-        
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
-        chart.draw(data, options);
-        }
-        </script>
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+    var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+    chart2.draw(data, {'title':'Operating System Marketshare', height: 500});
+}
+</script>
 {% endblock %}
 {% block content %}
 <div class="row">

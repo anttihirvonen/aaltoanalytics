@@ -18,7 +18,12 @@ def development_index(request):
     browsers = Pageview.objects.filter(datetime__gte=start_date, datetime__lte=end_date).values('browser_name').distinct()
     for b in browsers:
         b['user_count'] = Pageview.objects.filter(datetime__gte=start_date, datetime__lte=end_date, browser_name=b['browser_name']).values('user_id').distinct().count()
-    return render(request, 'development/index.html', {'start_date' : start_date, 'end_date' : end_date, 'browsers' : browsers })
+    # Since sqlite doesn't seem to support distinct in certain cases, this is a hack
+    # -- works as a quick hack, but better solution needed..
+    oses = Pageview.objects.filter(datetime__gte=start_date, datetime__lte=end_date).values('operating_system').distinct()
+    for b in oses:
+        b['user_count'] = Pageview.objects.filter(datetime__gte=start_date, datetime__lte=end_date, browser_name=b['operating_system']).values('user_id').distinct().count()
+    return render(request, 'development/index.html', {'start_date' : start_date, 'end_date' : end_date, 'browsers' : browsers, 'oses' : oses })
     
 def development_show_raw_log(request):
     return render(request, 'analytics/show.html', {'pageviews' : Pageview.objects.all() })
