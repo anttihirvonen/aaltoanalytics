@@ -22,7 +22,7 @@ def development_index(request):
     # -- works as a quick hack, but better solution needed..
     oses = Pageview.objects.filter(datetime__gte=start_date, datetime__lte=end_date).values('operating_system').distinct()
     for b in oses:
-        b['user_count'] = Pageview.objects.filter(datetime__gte=start_date, datetime__lte=end_date, browser_name=b['operating_system']).values('user_id').distinct().count()
+        b['user_count'] = Pageview.objects.filter(datetime__gte=start_date, datetime__lte=end_date, operating_system=b['operating_system']).values('user_id').distinct().count()
     return render(request, 'development/index.html', {'start_date' : start_date, 'end_date' : end_date, 'browsers' : browsers, 'oses' : oses })
     
 def development_show_raw_log(request):
