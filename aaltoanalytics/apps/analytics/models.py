@@ -15,7 +15,6 @@ class Service(models.Model):
 
 admin.site.register(Service)
 
-# Create your models here.
 class Pageview(models.Model):
     """
     Pageview is the basic building block for user tracking.
@@ -36,24 +35,25 @@ class Pageview(models.Model):
     # Read time in seconds, updated in save()
     total_read_time = models.IntegerField()
     
-    # Needs a ton of new fields, like user/session id, os,
-    # any other browser parameter we are interested in..
+    # Screen size
     screen_width = models.IntegerField(verbose_name="Leveys")
     screen_height = models.IntegerField(verbose_name="Korkeus")
     
+    # Browser info
     browser_name = models.CharField(max_length=16)
     browser_version = models.CharField(max_length=16)
     operating_system = models.CharField(max_length=16)
 
+    # Visited page details
     url = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
 
+    # Where did the user come from?
     referrer = models.CharField(max_length=255)
     
     def save(self, *args, **kwargs):
         difference = self.last_read_datetime - self.datetime
         self.total_read_time = difference.seconds
         super(Pageview, self).save(*args, **kwargs)
-   
 
 admin.site.register(Pageview)

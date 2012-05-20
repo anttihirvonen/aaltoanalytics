@@ -9,15 +9,20 @@ import datetime
 import urllib
 from django.utils import simplejson as json
 
-# Name says it all :-)
-TRANSPARENT_1_PIXEL_GIF = "\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x80\x00\x00\xff\xff\xff\x00\x00\x00\x21\xf9\x04\x01\x00\x00\x00\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02\x44\x01\x00\x3b"
-
 def log_pageview(request):
+    """
+    The workhorse for logging a new pageview to database.
+
+    This view parses all GET-parameters that were passed in, saves
+    a new pageview to database and returns JSONP-object that
+    is used to update the pageview id to client side. This way
+    read time can be updated easily for the same pageview using
+    the given id.
+    """
     try:
         service = Service.objects.get(tracking_id=request.GET.get("tid"))
     except Service.DoesNotExist:
         return HttpResponseNotFound("This service is not configured.")
-        #return HttpResponse(TRANSPARENT_1_PIXEL_GIF, content_type='image/gif') 
 
     params = { 'service' : service }
     # parse all parameters 
@@ -34,9 +39,6 @@ def log_pageview(request):
 
     params['referrer'] = request.GET.get("referrer", "")
 
-    #for key, value in params.items():
-    #    print key, " = ", urllib.unquote(value)
-
     params['datetime'] = datetime.datetime.utcnow()
     params['last_read_datetime'] = params['datetime']
     pageview = Pageview.objects.create(**params)
@@ -45,8 +47,11 @@ def log_pageview(request):
     return HttpResponse("AaltoAnalytics.setPageviewId("+str(pageview.id)+")", content_type='application/javascript') 
     
 def update_last_read_time(request, pageview_id):
+    """
+    Updates last read time for the pageview with pageview_id.
+    """
     pg = Pageview.objects.get(id=pageview_id)
     pg.last_read_datetime = datetime.datetime.utcnow()
     pg.save()
-    
+    # Return empty javascript
     return HttpResponse("", content_type="application/javascript")
