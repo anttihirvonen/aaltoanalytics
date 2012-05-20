@@ -6,7 +6,7 @@
 </div>
 <div data-role="content">
     <h2>List of most viewed by service</h2>
-    <ul data-role="listview">
+    <ul data-role="listview" data-divider-theme="a">
         {% for entry in service_pageview_list %}
             <li data-role="list-divider">{{ entry.service.name }}</li>
             {% for pageview in entry.pageviews %}
